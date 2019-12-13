@@ -71,3 +71,10 @@ post http://localhost:8080/graphql
 {"query":"query {getUser(account:\"admin\") {id fullname gender createTime}}","variables":null}
 
 {"query":"mutation {createUser(fullname: \"Employee 11\", account: \"employee11\", email: \"employee11@penguin.org\", mobile: \"13211111115\") {id fullname}}","variables":null}
+
+After clone the codes, and modify the database root's password, then you can run it. 
+
+cd graphqlServer
+
+mvn spring-boot:run
+
