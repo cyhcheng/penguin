@@ -1,4 +1,4 @@
-**Graphql server Demo Using Spring boot2.2 + MyBatis + MySQL.**
+**graphqlServer contain: Graphql server Demo Using Spring boot2.2 + MyBatis + MySQL.**
 
 Open application.properties, you can change the database infos.
 Open tutorial.graphqls, you can change the query and the mutation infos.
@@ -28,7 +28,7 @@ insert into users(id,fullname,account,password,mobile,email,gender) values(uuid(
 3. test query and mutation functions using iql
 http://localhost:8080/graphiql
 a. get all users.
-request: {
+{
   listUsers {
     id
     fullname
