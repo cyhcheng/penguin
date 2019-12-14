@@ -1,4 +1,4 @@
-**graphqlServer contain: Graphql server Demo Using Spring boot2.2 + MyBatis + MySQL.**
+**main contain: Spring boot2.2 + MyBatis + MySQL + graphql + WebSocket.**
 
 Open application.properties, you can change the database infos.
 
@@ -160,7 +160,7 @@ mvn spring-boot:run
 
 
 
-**Websocket Demo**
+**Websocket relative terms**
 
 **STOMP** stands for Simple Text Oriented Messaging Protocol. It is a messaging protocol that defines the format and rules for data exchange.
 Why do we need STOMP? Well, WebSocket is just a communication protocol. It doesn’t define things like - How to send a message only to users who are subscribed to a particular topic, or how to send a message to a particular user. We need STOMP for these functionalities.
@@ -169,3 +169,7 @@ Why do we need STOMP? Well, WebSocket is just a communication protocol. It doesn
 Under the hood, SockJS tries to use native WebSockets first. If that fails it can use a variety of browser-specific transport protocols and presents them through WebSocket-like abstractions.
 
 **Spring WebSocket** is the Spring module that enables WebSocket-style messaging support. As Spring WebSocket’s documentation states, the WebSocket protocol defines an important new capability for web applications: full-duplex, two-way communication between client and server.
+
+**Notification**
+https://jira.spring.io/browse/DATAREST-933. It can't run with spring web(webmvc).
+
