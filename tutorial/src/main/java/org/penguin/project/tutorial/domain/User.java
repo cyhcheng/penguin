@@ -1,10 +1,7 @@
 package org.penguin.project.tutorial.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.penguin.project.tutorial.enums.Gender;
 
 import javax.validation.constraints.NotBlank;
@@ -29,6 +26,7 @@ import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class User extends BaseDomain {
 
     private static final long serialVersionUID = -25541114590362230L;

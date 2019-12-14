@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
+    <meta charset="UTF-8">
     <title>Hello WebSocket</title>
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-    <script src="/js/app.js"></script>
+<!--    <script src="/js/app.js"></script>-->
 </head>
 <body>
 <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being enabled. Please enable Javascript and reload this page!</h2></noscript>
@@ -47,5 +48,32 @@
         </div>
     </div>
 </div>
+
+<!--<br>-->
+<!--<h3>Reactive WebSockets</h3>-->
+<!--<div class="events"></div>-->
+<!--<script>-->
+<!--    var clientWebSocket = new WebSocket("ws://localhost:8080/event-emitter");-->
+<!--    clientWebSocket.onopen = function() {-->
+<!--        console.log("clientWebSocket.onopen", clientWebSocket);-->
+<!--        console.log("clientWebSocket.readyState", "websocketstatus");-->
+<!--        clientWebSocket.send("event-me-from-browser");-->
+<!--    }-->
+<!--    clientWebSocket.onclose = function(error) {-->
+<!--        console.log("clientWebSocket.onclose", clientWebSocket, error);-->
+<!--        events("Closing connection");-->
+<!--    }-->
+<!--    clientWebSocket.onerror = function(error) {-->
+<!--        console.log("clientWebSocket.onerror", clientWebSocket, error);-->
+<!--        events("An error occured");-->
+<!--    }-->
+<!--    clientWebSocket.onmessage = function(error) {-->
+<!--        console.log("clientWebSocket.onmessage", clientWebSocket, error);-->
+<!--        events(error.data);-->
+<!--    }-->
+<!--    function events(responseEvent) {-->
+<!--        document.querySelector(".events").innerHTML += responseEvent + "<br>";-->
+<!--    }-->
+<!--</script>-->
 </body>
 </html>

@@ -2,6 +2,7 @@ package org.penguin.project.tutorial.domain;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.Instant;
 
@@ -17,6 +18,7 @@ import java.time.Instant;
  */
 @Data
 @Builder
+@EqualsAndHashCode(callSuper = false)
 public class Role extends BaseDomain {
 
     private String id;
