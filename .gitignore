@@ -1,1 +1,3 @@
-graphqlServer/target
+tutorial/target
+tutorial/.idea
+*.iml
