@@ -1,4 +1,4 @@
-**main contain: Spring boot2.2 + MyBatis + MySQL + graphql + WebSocket.**
+**main contain: Spring boot2.2 + MyBatis + MySQL + graphql + WebSocket + Redis.**
 
 Open application.properties, you can change the database infos.
 
@@ -78,7 +78,7 @@ cd graphqlServer
 
 mvn spring-boot:run
 
-**graphqlServer contain: Graphql server Demo Using Spring boot2.2 + MyBatis + MySQL.**
+**main contain: Graphql server Demo Using Spring boot2.2 + MyBatis + MySQL + Redis + GraphQL.**
 
 Open application.properties, you can change the database infos.
 
