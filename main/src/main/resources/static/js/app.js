@@ -13,11 +13,15 @@ function setConnected(connected) {
 
 function connect() {
     var socket = new SockJS('/ws');
+
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/greetings', function (greeting) {
+        stompClient.subscribe("/queue/errors", function(message) {
+            alert("Error " + message.body);
+        });
+        stompClient.subscribe('/queue/reply', function (greeting) {
             showGreeting(JSON.parse(greeting.body).content);
         });
     });

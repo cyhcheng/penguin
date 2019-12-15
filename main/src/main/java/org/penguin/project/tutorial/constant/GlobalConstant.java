@@ -2,7 +2,7 @@ package org.penguin.project.tutorial.constant;
 
 public final class GlobalConstant {
 
-    public static final String TOPIC = "/topic/greetings";
+    public static final String TOPIC = "/queue/reply";
 
     public static final String ENDPOINT = "/ws";
 

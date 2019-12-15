@@ -173,3 +173,20 @@ Under the hood, SockJS tries to use native WebSockets first. If that fails it ca
 **Notification**
 https://jira.spring.io/browse/DATAREST-933. It can't run with spring web(webmvc).
 
+**Redis**
+ brew services start redis
+ redis-server /usr/local/etc/redis.conf
+/usr/local/Cellar/redis/5.0.7
+
+# set access password
+redis-cli
+
+CONFIG SET requirepass "redissuperman"
+
+Setting up the Redis Cache on your machine
+Writing a Spring Boot Application
+Use Spring’s Integrated @Cacheable Annotation to cache results of method invocations using Spring Data Redis
+Gain more fine granular control by using the other available Annotations
+Create dynamic CacheKeys: Cache depending on the input parameters of our methods
+Define after what time (TTL=time-to-live) our cached Entries are not valid anymore
+Define different TTLs
