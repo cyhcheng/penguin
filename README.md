@@ -183,6 +183,11 @@ redis-cli
 
 CONFIG SET requirepass "redissuperman"
 
+https://redis.io/commands
+https://redis.io/documentation
+https://spring.io/projects/spring-data-redis
+https://docs.spring.io/spring-data/data-redis/docs/current/reference/html/#reference
+
 Setting up the Redis Cache on your machine
 Writing a Spring Boot Application
 Use Spring’s Integrated @Cacheable Annotation to cache results of method invocations using Spring Data Redis
