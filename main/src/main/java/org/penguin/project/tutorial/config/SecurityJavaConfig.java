@@ -30,15 +30,21 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests()
-                .antMatchers("/graphql").permitAll()
-                .antMatchers(HttpMethod.GET, "/user/list").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/user/create").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT, "/user/**").hasRole("USER")
-                .antMatchers(HttpMethod.PATCH, "/user/**").hasRole("USER")
-                .antMatchers(HttpMethod.DELETE, "/user/**").hasRole("ADMIN")
-                .and().httpBasic()
-                .authenticationEntryPoint(authenticationEntryPoint);
+//        http.csrf().disable().authorizeRequests()
+//                .antMatchers("/graphql").permitAll()
+//                .antMatchers(HttpMethod.GET, "/user/list").hasRole("ADMIN")
+//                .antMatchers(HttpMethod.POST, "/user/create").hasRole("ADMIN")
+//                .antMatchers(HttpMethod.PUT, "/user/**").hasRole("USER")
+//                .antMatchers(HttpMethod.PATCH, "/user/**").hasRole("USER")
+//                .antMatchers(HttpMethod.DELETE, "/user/**").hasRole("ADMIN")
+//                .and().httpBasic()
+//                .authenticationEntryPoint(authenticationEntryPoint);
+
+        http
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/user/list").hasRole("ADMIN")  // .anyRequest().authenticated() // any valid user can access == .antMatchers(HttpMethod.GET, "/user/list").hasRole("ADMIN") // only special role can access
+                .and().httpBasic();
     }
 
     @Bean
