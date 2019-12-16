@@ -15,8 +15,8 @@ import java.util.concurrent.CountDownLatch;
 
 @Slf4j
 @EnableCaching
-@SpringBootApplication
-public class MainApplication implements CommandLineRunner {
+@SpringBootApplication(scanBasePackages ="org.penguin.project.tutorial" )
+public class MainApplication {
 
     @Autowired
     CacheService cacheService;
@@ -28,12 +28,18 @@ public class MainApplication implements CommandLineRunner {
         SpringApplication.run(MainApplication.class, args);
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-        String firstString = cacheService.cacheThis();
-        log.info("Terry -> First: {}", firstString);
-        String secondString = cacheService.cacheThis();
-        log.info("Terry -> Second: {}", secondString);
+    /**
+     * 代替implements CommandLineRunner
+     * @return
+     */
+    @Bean
+    CommandLineRunner initDatabase(){
+        return args -> {
+            String firstString = cacheService.cacheThis();
+            log.info("Terry -> First: {}", firstString);
+            String secondString = cacheService.cacheThis();
+            log.info("Terry -> Second: {}", secondString);
+        };
     }
 
     private String getFromControlledCache(String param) {
