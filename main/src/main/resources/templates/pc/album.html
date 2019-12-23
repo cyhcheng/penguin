@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="${title}">中文属性显示</h1>
+<h1 th:text="${userAgent}">userAgent</h1>
+<h1 th:text="${{userAgent}}">userAgent</h1>
+
+<form action="#" th:action="@{/user/create}" method="post">
+<input type="text" th:field="*{userAgent}" />
+<input type="text" th:field="*{{userAgent}}" />
+</form>
+<div>
+http://localhost/server/H5/sa/m/album.html?saId=2010&type=1 <br>
+http://localhost/server/H5/sa/pc/album.html?saId=2010&type=1 <br>
+http://localhost/server/H5/sa/2010.html?saId=2010&type=1 <br>
+</div>
+
+<!--<p th:text="${id}">10000</p>-->
+<script>
+    var id = [[${id}]];
+    alert(id);
+</script>
+</body>
+</html>
+
+
