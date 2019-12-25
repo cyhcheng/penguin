@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.penguin.project.tutorial.mapper.UserMapper">
+
+    <resultMap id="baseResult" type="org.penguin.project.tutorial.domain.User">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="fullname" property="fullname" jdbcType="VARCHAR"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="encrypted_password" property="encryptedPassword" jdbcType="VARCHAR"/>
+        <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="gender" property="gender" jdbcType="INTEGER"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="baseResult">
+        SELECT id, fullname, username, email, mobile, gender, description, create_time, update_time FROM users
+    </select>
+
+    <select id="findByEmail" resultMap="baseResult" parameterType="org.penguin.project.tutorial.domain.User">
+        SELECT id, fullname, username, encrypted_password, email, mobile, gender, description, create_time, update_time FROM users where email = #{email}
+    </select>
+
+    <select id="findByUsername" resultMap="baseResult" parameterType="org.penguin.project.tutorial.domain.User">
+        SELECT id, fullname, username, encrypted_password, email, mobile, gender, description, create_time, update_time FROM users where username= #{username}
+    </select>
+
+    <select id="findByUsernameOrEmail" resultMap="baseResult" parameterType="org.penguin.project.tutorial.domain.User">
+        SELECT id, fullname, username, encrypted_password, email, mobile, gender, description, create_time, update_time FROM users where email = #{email} or username= #{username}
+    </select>
+
+    <select id="existByUsername" resultType="Boolean" parameterType="org.penguin.project.tutorial.domain.User">
+        select exists (SELECT 1 FROM users where username= #{username})
+    </select>
+
+    <select id="existByEmail" resultType="Boolean" parameterType="org.penguin.project.tutorial.domain.User">
+-- select exists (SELECT 1 FROM users where email= #{email})
+-- select case when Count(id)>0 then true else false end from users where email= #{email})
+select coalesce ((select 1 from users where email= #{email})
+    </select>
+
+    <insert id="insert" parameterType="org.penguin.project.tutorial.domain.User">
+        insert into users(id,fullname,username,encrypted_password,email,mobile,description) values(#{id},#{fullname},#{username},#{encryptedPassword},#{email},#{mobile},#{description})
+    </insert>
+
+</mapper>

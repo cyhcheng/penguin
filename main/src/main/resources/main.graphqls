@@ -1,8 +1,8 @@
 type User {
     id: String !
     fullname: String !
-    account: String !
-    password: String !
+    username: String !
+    encryptedPassword: String !
     email: String !
     mobile: String !
     gender: Gender
@@ -17,10 +17,10 @@ enum Gender {
 
 type Query {
     listUsers: [User]
-    getUser(account: String): User
+    getUser(username: String): User
 }
 
 
 type Mutation {
-    createUser(fullname: String !, account: String !, email: String !, mobile: String !): User
+    createUser(fullname: String !, username: String !, email: String !, mobile: String !): User
 }

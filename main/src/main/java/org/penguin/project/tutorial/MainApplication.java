@@ -1,6 +1,8 @@
 package org.penguin.project.tutorial;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.penguin.project.tutorial.service.CacheService;
 import org.penguin.project.tutorial.service.ControllerCacheService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +11,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 
 @Slf4j
 @EnableCaching
-@SpringBootApplication(scanBasePackages ="org.penguin.project.tutorial" )
+@SpringBootApplication(scanBasePackages = "org.penguin.project.tutorial")
 public class MainApplication {
 
     @Autowired
@@ -24,16 +28,20 @@ public class MainApplication {
     @Autowired
     ControllerCacheService controllerCacheService;
 
+    @Autowired
+    ModelMapper modelMapper;
+
     public static void main(String[] args) {
         SpringApplication.run(MainApplication.class, args);
     }
 
     /**
      * 代替implements CommandLineRunner
+     *
      * @return
      */
     @Bean
-    CommandLineRunner initDatabase(){
+    CommandLineRunner initDatabase() {
         return args -> {
             String firstString = cacheService.cacheThis();
             log.info("Terry -> First: {}", firstString);
@@ -58,4 +66,23 @@ public class MainApplication {
     public CountDownLatch latch() {
         return new CountDownLatch(1);
     }
+
+    @Bean
+    public ModelMapper getModelMapper(){
+        return new ModelMapper();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+//        The number 6 represents how strong you want the encryption.It can be in a range between 4 and 31.
+//        If you do not put a number the program will use one randomly each time
+//        That you start the application, so your encrypted passwords will not work well
+        return new BCryptPasswordEncoder(6);
+    }
+
+    @Bean
+    public ObjectMapper getObjectMapper(){
+        return new ObjectMapper();
+    }
+
 }

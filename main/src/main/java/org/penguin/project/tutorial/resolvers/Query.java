@@ -26,8 +26,8 @@ public class Query implements GraphQLQueryResolver {
                 .collect(Collectors.toList());
     }
 
-    public User getUser(String account) throws EntityNotFoundException {
-        return  userService.findByAccount(account).orElseThrow(EntityNotFoundException::new);
+    public User getUser(String username) throws EntityNotFoundException {
+        return  userService.findByUsername(username).orElseThrow(EntityNotFoundException::new);
     }
 
 }

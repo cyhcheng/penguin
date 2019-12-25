@@ -1,7 +1,6 @@
 package org.penguin.project.tutorial.database;
 
 import lombok.AllArgsConstructor;
-import org.penguin.project.tutorial.domain.User;
 import org.penguin.project.tutorial.service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

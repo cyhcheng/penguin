@@ -18,7 +18,7 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe("/queue/errors", function(message) {
+        stompClient.subscribe("/queue/errors", function (message) {
             alert("Error " + message.body);
         });
         stompClient.subscribe('/queue/reply', function (greeting) {

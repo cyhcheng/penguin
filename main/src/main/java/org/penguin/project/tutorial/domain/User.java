@@ -7,6 +7,8 @@ import org.penguin.project.tutorial.enums.Gender;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import java.util.Set;
 
 import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 
@@ -26,23 +28,24 @@ import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = false,of = {"id"})
 public class User extends BaseDomain {
 
     private static final long serialVersionUID = -25541114590362230L;
 
-//    @NotEmpty
     private String id;
 
     @NotBlank
     private String fullname;
 
     @NotBlank
-    private String account;
+    @Size(max = 20)
+    private String username;
 
     @NotBlank
+    @Size(max = 120)
     @JsonProperty(access = WRITE_ONLY)
-    private String password;
+    private String encryptedPassword;
 
     @NotBlank
     @Pattern(regexp = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$")
@@ -58,4 +61,5 @@ public class User extends BaseDomain {
 
     private String description;
 
+    private Set<Role> roles;
 }

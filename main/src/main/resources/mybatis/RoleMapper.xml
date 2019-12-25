@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.penguin.project.tutorial.dao.RoleMapper">
+<mapper namespace="org.penguin.project.tutorial.mapper.RoleMapper">
 
     <resultMap id="baseResult" type="org.penguin.project.tutorial.domain.Role">
         <id column="id" property="id" jdbcType="VARCHAR"/>
@@ -17,8 +17,12 @@
     <select id="findByName" resultMap="baseResult" parameterType="org.penguin.project.tutorial.domain.Role">
         SELECT id, name, description, create_time, update_time FROM roles where name= #{name}
     </select>
+
     <insert id="insert" parameterType="org.penguin.project.tutorial.domain.Role">
         insert into roles(id,name,description) values(#{id},#{name},#{description})
     </insert>
 
+    <select id="findByUserId" resultMap="baseResult" parameterType="string">
+select roles.* from roles left join users_roles on roles.id=users_roles.role_id where users_roles.enabled=B'1' and users_roles.user_id=#{id}
+    </select>
 </mapper>

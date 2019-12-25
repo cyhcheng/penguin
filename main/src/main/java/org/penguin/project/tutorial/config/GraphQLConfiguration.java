@@ -10,6 +10,8 @@ import io.leangen.graphql.GraphQLSchemaGenerator;
 import io.leangen.graphql.metadata.strategy.query.AnnotatedResolverBuilder;
 import io.leangen.graphql.metadata.strategy.query.PublicResolverBuilder;
 import io.leangen.graphql.metadata.strategy.value.jackson.JacksonValueMapperFactory;
+import lombok.AllArgsConstructor;
+import org.modelmapper.TypeToken;
 import org.penguin.project.tutorial.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,14 +19,17 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Arrays;
 
 @Configuration
+@AllArgsConstructor
 public class GraphQLConfiguration {
 
+    private final UserService userDetailService;
     @Bean
-    public GraphQL graphQL(UserService userService) {
+    public GraphQL graphQL() {
 
         GraphQLSchema schema = new GraphQLSchemaGenerator()
                 .withResolverBuilders(new AnnotatedResolverBuilder(), new PublicResolverBuilder("org.penguin.project.tutorial"))
-                .withOperationsFromSingleton(userService)
+                // https://github.com/leangen/graphql-spqr/wiki/Errors#dynamic-proxies
+                .withOperationsFromSingleton(userDetailService, new TypeToken<UserService>(){}.getType()) // fix error: io.leangen.graphql.generator.exceptions.TypeMappingException: The registered object of type appears to be a dynamically generated proxy, so its type can not be reliably determined. Provide the type explicitly when registering the bean.
                 .withValueMapperFactory(new JacksonValueMapperFactory()).generate();
         return GraphQL.newGraphQL(schema)
                 .queryExecutionStrategy(new AsyncExecutionStrategy())

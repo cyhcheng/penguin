@@ -1,4 +1,4 @@
-package org.penguin.project.tutorial.nterceptor;
+package org.penguin.project.tutorial.interceptor;
 
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;

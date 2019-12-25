@@ -1,4 +1,4 @@
-package org.penguin.project.tutorial.model;
+package org.penguin.project.tutorial.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ServerMessage {
+public class WebSocketServerMessage {
     private LocalDateTime time;
     private String content;
 }

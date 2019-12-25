@@ -1,10 +1,11 @@
-package org.penguin.project.tutorial.dao;
+package org.penguin.project.tutorial.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.penguin.project.tutorial.domain.Role;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * @program: t3
@@ -25,4 +26,6 @@ public interface RoleMapper {
     Optional<Role> findByName(String name);
 
     int insert(Role role);
+
+    Set<Role> findByUserId(String id);
 }

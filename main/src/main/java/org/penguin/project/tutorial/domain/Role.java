@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.time.Instant;
+import java.util.Objects;
 
 /**
  * @program: t3
@@ -18,7 +18,7 @@ import java.time.Instant;
  */
 @Data
 @Builder
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = false,of = {"id"})
 public class Role extends BaseDomain {
 
     private String id;
@@ -30,5 +30,4 @@ public class Role extends BaseDomain {
 //    private Instant createdAt;
 //
 //    private Instant updatedAt;
-
 }

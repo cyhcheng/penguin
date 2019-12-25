@@ -1,4 +1,4 @@
-package org.penguin.project.tutorial.dao;
+package org.penguin.project.tutorial.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.penguin.project.tutorial.domain.User;
@@ -25,11 +25,11 @@ public interface UserMapper {
 
     Optional<User> findByEmail(String email);
 
-    Optional<User> findByAccountOrEmail(String account, String email);
+    Optional<User> findByUsernameOrEmail(String username, String email);
 
-    Optional<User> findByAccount(String account);
+    Optional<User> findByUsername(String username);
 
-    boolean existByAccount(String user);
+    boolean existByUsername(String username);
 
     boolean existByEmail(String email);
 }
