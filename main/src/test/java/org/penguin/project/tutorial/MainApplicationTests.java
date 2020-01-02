@@ -19,10 +19,10 @@ class MainApplicationTests {
     }
 
     @Test
-    void testModelMapper(){
+    void testModelMapper() {
         Order order = new Order();
 
-        Address address =new Address();
+        Address address = new Address();
         address.setCity("城市");
         address.setStreet("街道");
         order.setBillingAddress(address);
@@ -41,4 +41,6 @@ class MainApplicationTests {
         assertEquals(order.getBillingAddress().getStreet(), orderDTO.getBillingStreet());
         assertEquals(order.getBillingAddress().getCity(), orderDTO.getBillingCity());
     }
+
+//    @Test(expected = IllegalArgumentException.class)
 }

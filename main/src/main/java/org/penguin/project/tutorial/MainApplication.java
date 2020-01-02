@@ -10,10 +10,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.Arrays;
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 
@@ -32,7 +34,12 @@ public class MainApplication {
     ModelMapper modelMapper;
 
     public static void main(String[] args) {
-        SpringApplication.run(MainApplication.class, args);
+        ConfigurableApplicationContext ctx = SpringApplication.run(MainApplication.class, args);
+        log.info("# Beans: {}", ctx.getBeanDefinitionCount());
+
+        String[] names = ctx.getBeanDefinitionNames();
+        Arrays.sort(names);
+        Arrays.asList(names).forEach(System.out::println);
     }
 
     /**
@@ -68,7 +75,7 @@ public class MainApplication {
     }
 
     @Bean
-    public ModelMapper getModelMapper(){
+    public ModelMapper getModelMapper() {
         return new ModelMapper();
     }
 
@@ -81,7 +88,7 @@ public class MainApplication {
     }
 
     @Bean
-    public ObjectMapper getObjectMapper(){
+    public ObjectMapper getObjectMapper() {
         return new ObjectMapper();
     }
 
