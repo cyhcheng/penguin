@@ -38,7 +38,7 @@
 
 这段文本包含 <sup>上标</sup> <sub>下标</sub>
 
-<i><b>html<b/>html斜体文本</i>
+html<i><b>html<b/>斜体文本</i>
 
 `printf()` 函数或代码块
 
