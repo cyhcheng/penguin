@@ -36,12 +36,13 @@
 `printf()` 函数或代码块
 
 
-      package org.penguin.project.constant;
+```java
+package org.penguin.project.constant;
 
-      public enum CommodityType {
+public enum CommodityType {
 
-        SINGLE, MANY;
-      }
+  SINGLE, MANY;
+}
 
 
 ***
