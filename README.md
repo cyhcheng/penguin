@@ -36,6 +36,14 @@
 `printf()` 函数或代码块
 
 
+  package org.penguin.project.constant;
+
+  public enum CommodityType {
+
+      SINGLE, MANY;
+  }
+
+
 ***
 
 **main contain: Spring boot2.2 + MyBatis + MySQL + graphql + WebSocket + Redis + Spring security + JWT.**
