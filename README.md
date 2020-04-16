@@ -11,7 +11,8 @@
 
 ~~删除线文本~~
 
-<u>下划线文本</u>
+<u>下划线文本</u>[^脚注]
+
 ***
 
 **main contain: Spring boot2.2 + MyBatis + MySQL + graphql + WebSocket + Redis + Spring security + JWT.**
