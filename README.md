@@ -9,6 +9,9 @@
 **粗体文本**
 ***粗斜体文本***
 
+~~删除线文本~~
+
+<u>下划线文本</u>
 ***
 
 **main contain: Spring boot2.2 + MyBatis + MySQL + graphql + WebSocket + Redis + Spring security + JWT.**
